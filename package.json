@@ -1,0 +1,15 @@
+{
+  "name": "filtrify-photo-backend",
+  "version": "1.0.0",
+  "description": "backend node server for the filtrify client",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node src/index.js",
+    "test": "test"
+  },
+  "author": "Sean Becker [rabbitwerks.js]",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
