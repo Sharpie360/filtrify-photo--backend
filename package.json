@@ -4,12 +4,16 @@
   "description": "backend node server for the filtrify client",
   "main": "index.js",
   "scripts": {
-    "dev": "node src/index.js",
+    "dev": "nodemon src/index.js",
     "test": "test"
   },
   "author": "Sean Becker [rabbitwerks.js]",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "node-fetch": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
   }
 }
