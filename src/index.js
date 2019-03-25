@@ -1,31 +1,33 @@
 // express.js webserver module
 const express = require('express');
-
+// enables cors for cross-stack comms
 const cors = require('cors');
-
-// handles serverside fetch requests
+// handles serverside requests
 const fetch = require('node-fetch');
 
 // handles file paths and mock data
 const path = require('path');
 const _filterData = require('./_mock/_filterData');
 
+// middlewares
 const logger = require('./middleware/logger');
 
 
 
-// invoke express app
+// express app
 const app = express();
 
 app.use(cors());
 app.use(logger);
-app.use(express.static(path.join(__dirname, '_mock')));
 
 
+// root route
 app.get('/', (req, res) => {
   res.json('hello from the filtrify backend');
 });
 
+
+// demo routes for mock data
 app.get('/api/filters', (req, res) => {
   res.sendFile(path.join(__dirname, './_mock/', 'filters.json'));
 });
