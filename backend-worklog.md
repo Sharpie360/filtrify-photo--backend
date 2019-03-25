@@ -3,11 +3,11 @@
 ## For Stream
 - Express webserver
   - route for adding cors proxy to requests
-  - fetch image for client
-  - respond with image
-- Cors-Anywhere package
-  - setup and understand
-  - test
+  - pull url from path prop on request object
+    - might need validation for ://
+  - apply cors headers to request
+  - respond with proxied image
+
 
 - Do it again to understand it better
 - Break into 4 main tasks
