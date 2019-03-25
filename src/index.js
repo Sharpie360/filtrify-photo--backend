@@ -6,10 +6,11 @@ const cors = require('cors');
 // handles serverside fetch requests
 const fetch = require('node-fetch');
 
-// handles file paths
+// handles file paths and mock data
 const path = require('path');
+const _filterData = require('./_mock/_filterData');
 
-const logger = require('./middleware/logger')
+const logger = require('./middleware/logger');
 
 
 
@@ -22,11 +23,15 @@ app.use(express.static(path.join(__dirname, '_mock')));
 
 
 app.get('/', (req, res) => {
-  res.json('hello from the filtrify backend')
+  res.json('hello from the filtrify backend');
 });
 
-app.get('/filters', (req, res) => {
+app.get('/api/filters', (req, res) => {
   res.sendFile(path.join(__dirname, './_mock/', 'filters.json'));
+});
+app.get('/api/filters/:id', (req, res) => {
+  const _id = req.params.id;
+  res.json(_filterData[_id]);
 });
 
 
