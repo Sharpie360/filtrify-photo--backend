@@ -34,7 +34,7 @@ app.get('*', (req, res) => {
 });
 
 // host and port env variables and fallbacks
-const host = process.env.HOST || '0.0.0.0';
+const host = process.env.HOST || '127.0.0.1';
 const port = process.env.PORT || 1337;
 
-app.listen(port, () => console.log(`Server started on port: ${port}`));
+app.listen(port, host, () => console.log(`Server started on port: ${port}`));
