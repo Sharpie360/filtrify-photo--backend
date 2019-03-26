@@ -28,9 +28,33 @@ app.use('*', (req, res, next) => {
 })
 
 // validate url and if true, finish request
-app.get('*', (req, res) => {
+app.get('*', (req, res, next) => {
   let url = req.path.substring(1);
-  isValidUrl(url) ? req.pipe(request.get(encodeURI(url))).pipe(res) : null;
+  
+  const error = (res) => {
+    res.status(500);
+    return new Error('Invalid URL')
+  }
+
+  isValidUrl(url)
+    ? req.pipe(request.get(encodeURI(url))).pipe(res)
+      .on('error', (error) => next(error))
+    : next(error);
+});
+
+app.use((req, res, next) => {
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+  res.json({
+    error: {
+      message: error.message,
+    },
+  });
 });
 
 // host and port env variables and fallbacks
