@@ -20,7 +20,7 @@ app.use(cors());
 // request logger
 app.use(logger);
 
-// apply CORS headers to the respose 
+// apply CORS headers to any reuqest that hits the api
 app.use('*', (req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
