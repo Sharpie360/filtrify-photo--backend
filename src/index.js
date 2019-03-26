@@ -4,6 +4,8 @@ const express = require('express');
 const cors = require('cors');
 // handles serverside requests
 const request = require('request');
+// handles url validation @ joshuaferr1s
+const isValidUrl = require('url-validation');
 
 // handles file paths and mock data
 const path = require('path');
@@ -45,8 +47,7 @@ app.use('*', (req, res, next) => {
 
 app.get('*', (req, res) => {
   let url = req.path.substring(1);
-  console.log(url)
-  req.pipe(request.get(encodeURI(url))).pipe(res);
+  isValidUrl(url) ? req.pipe(request.get(encodeURI(url))).pipe(res) : null;
 });
 
 // host and port env variables and fallbacks

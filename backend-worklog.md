@@ -4,9 +4,10 @@
 - Express webserver
   - route for adding cors proxy to requests
   - pull url from path prop on request object
-    - might need validation for ://
+    - validate url 
   - apply cors headers to request
   - respond with proxied image
+    - might need validation for ://
 
 
 - Do it again to understand it better
