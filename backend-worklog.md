@@ -1,13 +1,26 @@
 # Filtrify Photo Backend
 
-## For Stream
-- Express webserver
-  - route for adding cors proxy to requests
-  - pull url from path prop on request object
-    - validate url 
-  - apply cors headers to request
-  - respond with proxied image
-    - might need validation for ://
+## For Livecoding Stream
+### **(1) Express Server**  
+- init Express webserver
+- wildcard route for adding cors proxy to all requests
+- add cors to express server to share with frontend
+- add url-validation to test for valid URLs
+### **(2) CORS Adder**  
+- pull url from path prop on request object
+  - validate url
+  - make request to resourse
+  - pipe resource response into response object
+### **(3) Error Handling**  
+  - write error handler function
+    - if invalid url skip request
+    - call next with error
+  - if error from remote server
+    - return new error
+### **(4) Deployment**  
+- try and deploy
+- try against deployed
+
 
 
 - Do it again to understand it better
