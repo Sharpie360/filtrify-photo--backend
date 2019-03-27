@@ -8,6 +8,7 @@ const isValidUrl = require('url-validation');
 // corrects the / removal in the proxied http[://]
 const repairURI = (uri) => {
   if (uri.includes(':/') && !uri.includes('://')) {
+    // takes the [http] part and adds [:/] to it, then merges that with the [/rest-of-the-url.com/some-cool-image] 
     return `${uri.split(':')[0]}:/${uri.split(':')[1]}`;
   }
   return uri;

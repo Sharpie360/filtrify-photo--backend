@@ -18,9 +18,17 @@
   - if error from remote server
     - return new error
 ### **(4) Deployment**  
-- try and deploy
-- try against deployed
-
+- write URL repair function
+  - check if contains [ :/ ] ~ ?
+    - ~ break into 3 vars
+      - [ http ] var
+      - [ :/ ] static string var
+      - [ /rest-of-link.com/something ] var
+    - ~ use provided url without repair Fn
+- deploy to Now.sh
+- update frontend to hit cors proxy
+- test using known CORS blocked image
+- celebrate!
 ---
 
 ## TODO
