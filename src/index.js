@@ -15,6 +15,9 @@ app.use('*', (req, res, next) => {
   next();
 })
 
+// handles status response for favicon (auto requested)
+app.get('/favicon.ico', (req, res) => res.sendStatus(204));
+
 // validate url and if true, finish request
 app.get('*', (req, res, next) => {
   let url = req.path.substring(1);
