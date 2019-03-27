@@ -5,6 +5,14 @@ const request = require('request');
 // handles url validation @ joshuaferr1s
 const isValidUrl = require('url-validation');
 
+// corrects the / removal in the proxied http[://]
+const repairURI = (uri) => {
+  if (uri.includes(':/') && !uri.includes('://')) {
+    return `${uri.split(':')[0]}:/${uri.split(':')[1]}`;
+  }
+  return uri;
+};
+
 // express app
 const app = express();
 
@@ -18,10 +26,10 @@ app.use('*', (req, res, next) => {
 // handles status response for favicon (auto requested)
 app.get('/favicon.ico', (req, res) => res.sendStatus(204));
 
-// validate url and if true, finish request
+// repair url, then validate and if true, finish request
 app.get('*', (req, res, next) => {
-  let url = req.path.substring(1);
-  
+  let url = repairURI(req.path.substring(1));
+
   // create new error for invalid url
   const error = (res) => {
     res.status(500);
