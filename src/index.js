@@ -1,18 +1,12 @@
 // express.js webserver module
 const express = require('express');
-// cors modules
-const cors = require('cors');
-// handles serverside requests
+// handles serverside http requests
 const request = require('request');
 // handles url validation @ joshuaferr1s
 const isValidUrl = require('url-validation');
 
 // express app
 const app = express();
-
-// add cors to api headers
-// enables cors for cross-stack comms
-app.use(cors());
 
 // apply CORS headers to any reuqest that hits the api
 app.use('*', (req, res, next) => {
@@ -28,7 +22,7 @@ app.get('*', (req, res, next) => {
   // create new error for invalid url
   const error = (res) => {
     res.status(500);
-    return new Error('Invalid URL')
+    return new Error('Invalid URL');
   }
 
   // check if valid URL
