@@ -7,18 +7,12 @@ const request = require('request');
 // handles url validation @ joshuaferr1s
 const isValidUrl = require('url-validation');
 
-// middlewares
-const logger = require('./middleware/logger');
-
 // express app
 const app = express();
 
 // add cors to api headers
 // enables cors for cross-stack comms
 app.use(cors());
-
-// request logger
-app.use(logger);
 
 // apply CORS headers to any reuqest that hits the api
 app.use('*', (req, res, next) => {
