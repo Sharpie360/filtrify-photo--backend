@@ -31,23 +31,25 @@ app.use('*', (req, res, next) => {
 app.get('*', (req, res, next) => {
   let url = req.path.substring(1);
   
+  // create new error for invalid url
   const error = (res) => {
     res.status(500);
     return new Error('Invalid URL')
   }
 
+  // check if valid URL
   isValidUrl(url)
-    ? req.pipe(request.get(encodeURI(url))).pipe(res)
-      .on('error', (error) => next(error))
+    // if true make GET request to URL
+    ? request.get(url)
+        // pipe response into response object
+        .pipe(res)
+        // throw an error if error from remote asset
+        .on('error', (error) => next(error))
+    // if false skip and pass error to next
     : next(error);
 });
 
-app.use((req, res, next) => {
-  const err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
+// middleware for error handling
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.json({
@@ -61,4 +63,5 @@ app.use((err, req, res, next) => {
 const host = process.env.HOST || '127.0.0.1';
 const port = process.env.PORT || 1337;
 
+// starts the server on provided HOST / PORT or fallbacks
 app.listen(port, host, () => console.log(`Server started on port: ${port}`));
