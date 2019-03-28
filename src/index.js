@@ -23,6 +23,9 @@ const app = express();
 // apply CORS headers to any request that hits the api
 app.use(corsAdder);
 
+// handles the root route response
+app.get('/', (req, res) => res.json('Welcome to the Filtrify Photo backend.'));
+
 // handles status response for favicon (auto requested)
 app.get('/favicon.ico', (req, res) => res.sendStatus(204));
 
