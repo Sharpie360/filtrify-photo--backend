@@ -24,12 +24,17 @@
       - [ http ] var
       - [ :/ ] static string var
       - [ /rest-of-link.com/something ] var
-      - combine into template literalgit 
     - use provided url without repair Fn
 - deploy to Now.sh
 - update frontend to hit cors proxy
 - test using known CORS blocked image
 - celebrate!
+### **(5) Refactor**
+- combine Reapair URL into template literal
+- extract CORS Adder to seperate middleware file
+  - remove wildcard route placeholder
+  - extract and export module
+  - import and use CORS Adder in index.js
 ---
 
 ## TODO
