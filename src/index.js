@@ -5,6 +5,9 @@ const request = require('request');
 // handles url validation @ joshuaferr1s
 const isValidUrl = require('url-validation');
 
+// middleware
+const corsAdder = require('./middleware/corsAdder');
+
 // corrects the / removal in the proxied http[://]
 const repairURI = (uri) => {
   if (uri.includes(':/') && !uri.includes('://')) {
@@ -17,12 +20,8 @@ const repairURI = (uri) => {
 // express app
 const app = express();
 
-// apply CORS headers to any reuqest that hits the api
-app.use('*', (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-})
+// apply CORS headers to any request that hits the api
+app.use(corsAdder);
 
 // handles status response for favicon (auto requested)
 app.get('/favicon.ico', (req, res) => res.sendStatus(204));

@@ -30,7 +30,7 @@
 - test using known CORS blocked image
 - celebrate!
 ### **(5) Refactor**
-- combine Reapair URL into template literal
+- combine Repair URL into template literal
 - extract CORS Adder to seperate middleware file
   - remove wildcard route placeholder
   - extract and export module
