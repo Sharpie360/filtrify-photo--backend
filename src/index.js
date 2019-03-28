@@ -66,4 +66,4 @@ const host = process.env.HOST || '127.0.0.1';
 const port = process.env.PORT || 1337;
 
 // starts the server on provided HOST / PORT or fallbacks
-app.listen(port, host, () => console.log(`Server started on port: ${port}`));
+app.listen(port, host, () => console.log(`Server started on port: ${host}:${port}`));

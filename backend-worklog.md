@@ -2,39 +2,41 @@
 
 ## For Livecoding Stream
 ### **(1) Express Server**  
-- init Express webserver
-- init favicon route for favicon.ico request
-- wildcard route for adding cors proxy to all requests
-- add url-validation to test for valid URLs
+* [ ] init Express webserver  
+  * [ ] init root '/' route
+  * [ ] init favicon route for favicon.ico request  
+  * [ ] wildcard route for adding cors proxy to all requests  
+* [ ] add url-validation to test for valid URLs  
 ### **(2) CORS Adder**  
-- pull url from path prop on request object
-  - validate url
-  - make request to resourse
-  - pipe resource response into response object
+* [ ] pull url from path prop on request object  
+  * [ ] validate url  
+  * [ ] make request to resourse  
+  * [ ] pipe resource response into response object  
 ### **(3) Error Handling**  
-  - write error handler function
-    - if invalid url skip request
-    - call next with error
-  - if error from remote server
-    - return new error
+  * [ ] write error handler function  
+    * [ ] if invalid url skip request  
+    * [ ] call next with error  
+  * [ ] if error from remote server  
+    * [ ] return new error  
 ### **(4) Deployment**  
-- write URL repair function
-  - check if contains [ :/ ]
-    - break into 3 vars
-      - [ http ] var
-      - [ :/ ] static string var
-      - [ /rest-of-link.com/something ] var
-    - use provided url without repair Fn
-- deploy to Now.sh
-- update frontend to hit cors proxy
-- test using known CORS blocked image
-- celebrate!
+* [ ] write URL repair function  
+  * [ ] check if contains [ :/ ]  
+    * [ ] break into 3 vars  
+      * [ ] [ http ] var  
+      * [ ] [ :/ ] static string var  
+      * [ ] [ /rest-of-link.com/something ] var  
+    * [ ] use provided url without repair Fn  
+* [ ] deploy to Now.sh  
+  * [ ] update frontend to hit cors proxy  
+  * [ ] test using known CORS blocked image  
+* [ ] celebrate!  
 ### **(5) Refactor**
-- combine Repair URL into template literal
-- extract CORS Adder to seperate middleware file
-  - remove wildcard route placeholder
-  - extract and export module
-  - import and use CORS Adder in index.js
+* [ ] combine Repair URL into template literal  
+* [ ] extract CORS Adder to seperate middleware file  
+  * [ ] remove wildcard route placeholder  
+  * [ ] extract and export module  
+  * [ ] import and use CORS Adder in index.js  
+
 ---
 
 ## TODO
