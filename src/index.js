@@ -21,6 +21,23 @@ app.get('/', (req, res) => res.send('Hello from the Filtrify Photo backend. Have
 // 3.2. Set up Favicon catch route
 app.get('/favicon', (req, res) => res.sendStatus(204));
 
+// 4. Set up CORS-Adder middleware
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
+
+
+// 5. Set up Error Handling middleware
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+  res.json({
+    error: err.message,
+    stack: err.stack
+  });
+});
 
 
 // 3.3. Set the App to listen on processEnvironment port or fallback port
