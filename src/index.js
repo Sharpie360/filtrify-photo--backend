@@ -30,5 +30,5 @@ const port = process.env.PORT || 1337;
 const host = process.env.HOST || '127.0.0.1';
 
 // 3.5 Start listening on specified port and host (host is a secondary arg)
-app.listen(port, host, () => console.log(`Server started at ${host}:${port} Have fun and enjoy! - RabbitWerks.js`));
+app.listen(port, host, () => console.log(`Server started at ${host}:${port} Have fun and enjoy! | <3 RabbitWerks.js`));
 
